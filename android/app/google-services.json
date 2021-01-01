@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "2609245510",
+    "project_id": "finansalfirebase",
+    "storage_bucket": "finansalfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2609245510:android:3e5b68942147b83c340947",
+        "android_client_info": {
+          "package_name": "com.example.finansalproje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2609245510-441csu0arjqekv4tqi3k0s8uhr49j0hq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzSa7vZS_CYUJzsjl2f2f4Sajrc5JfvIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2609245510-441csu0arjqekv4tqi3k0s8uhr49j0hq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

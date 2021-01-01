@@ -1,0 +1,1 @@
+export 'package:finansalproje/exchange/model/currency-rates.dart';
