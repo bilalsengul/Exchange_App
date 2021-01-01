@@ -1,14 +1,22 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
-import 'package:finansalbt/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
 import 'constants.dart';
-import 'screens/splash/splash_screen.dart';
+import 'package:finansalproje/screens/giris_yap/giris_ekrani.dart';
+
 import 'size_config.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -18,16 +26,15 @@ class MyApp extends StatelessWidget {
       title: 'FİNANSAL BT',
 
       theme:tema(context),
-      home: SplashScreen(),
-      initialRoute: SplashScreen.routeName,
-      routes: routes,
+      home: GirisEkrani(),
+     // initialRoute: SplashScreen.routeName,
     );
   }
 }
 
 ThemeData tema(BuildContext context){
- return ThemeData(
-   //errorColor: Colors.white,
+  return ThemeData(
+    //errorColor: Colors.white,
     inputDecorationTheme: _inputDecerationTheme() ,
     scaffoldBackgroundColor: Colors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -41,9 +48,9 @@ ThemeData tema(BuildContext context){
       elevation: 0,
       brightness: Brightness.light,
       iconTheme: IconThemeData(color: kPrimaryColor),
-        // textTheme: TextTheme(headline6: TextStyle(color: kPrimaryColor, fontSize: yuksekligeGoreAyarla(context,48)))
+      // textTheme: TextTheme(headline6: TextStyle(color: kPrimaryColor, fontSize: yuksekligeGoreAyarla(context,48)))
     ),
-   //inputDecorationTheme: _inputDecoration(context)
+    //inputDecorationTheme: _inputDecoration(context)
   );
 
 }
@@ -82,3 +89,6 @@ InputDecorationTheme _inputDecoration(BuildContext context){
   );
 }
 */
+
+
+

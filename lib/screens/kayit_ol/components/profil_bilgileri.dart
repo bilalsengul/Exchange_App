@@ -1,8 +1,8 @@
-import 'package:finansalbt/screens/components/widgets.dart';
+import 'package:finansalproje/screens/components/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:finansalbt/screens/components/formlar.dart';
-import 'package:finansalbt/screens/kayit_ol/components/profil_bilgileri.dart';
-import 'package:finansalbt/size_config.dart';
+import 'package:finansalproje/screens/components/formlar.dart';
+import 'package:finansalproje/screens/kayit_ol/components/profil_bilgileri.dart';
+import 'package:finansalproje/size_config.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
@@ -68,7 +68,7 @@ class _ProfilFormState extends State<ProfilForm> {
             SizedBox(height: yuksekligeGoreAyarla(context, 60)),
             ProfilFormElemanlari(),
 
-        ],
+          ],
         ),
       ),
     );

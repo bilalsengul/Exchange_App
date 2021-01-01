@@ -1,4 +1,4 @@
-import 'package:finansalbt/screens/kayit_ol/kayit_ekrani.dart';
+import 'package:finansalproje/screens/kayit_ol/kayit_ekrani.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -96,8 +96,10 @@ TextFormField buildSoyad(BuildContext context) {
       )
   );
 }
-TextFormField buildSifre(BuildContext context,{@required bool dogrulama}) {
+TextFormField buildSifre(BuildContext context,TextEditingController _password,{@required bool dogrulama} ) {
   return TextFormField(
+
+      controller: _password,
       obscureText: true,
       autovalidateMode: AutovalidateMode.onUserInteraction ,
 
@@ -137,8 +139,9 @@ TextFormField buildSifre(BuildContext context,{@required bool dogrulama}) {
 
   );
 }
-TextFormField buildEmail(BuildContext context) {
+TextFormField buildEmail(BuildContext context, TextEditingController _eMail) {
   return TextFormField(
+    controller: _eMail,
       keyboardType: TextInputType.emailAddress,
       autovalidateMode: AutovalidateMode.onUserInteraction ,
 
@@ -151,9 +154,9 @@ TextFormField buildEmail(BuildContext context) {
       },
       validator: (value) {
         if (value.isEmpty) {
-          return "";
+          return kEmailNullError;
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          return "";
+          return kInvalidEmailError;
         }
         return null;
       },
@@ -178,3 +181,4 @@ TextFormField buildEmail(BuildContext context) {
       )
   );
 }
+
