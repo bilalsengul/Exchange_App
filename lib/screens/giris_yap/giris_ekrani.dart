@@ -6,7 +6,6 @@ import '../../size_config.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class GirisEkrani extends StatelessWidget {
-
   static String routeName= "/giris";
   @override
   Widget build(BuildContext context) {
@@ -26,6 +25,7 @@ AppBar _appBar(BuildContext context){
 
   return AppBar(
     centerTitle: true,
+    //elevation: 0,
     title: Text("Giriş Yap", style: TextStyle(
         color: kPrimaryColor,
         fontSize: yuksekligeGoreAyarla(context,27)),),

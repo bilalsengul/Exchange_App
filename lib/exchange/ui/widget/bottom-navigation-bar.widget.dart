@@ -1,6 +1,9 @@
+import 'package:finansalproje/constants.dart';
 import 'package:finansalproje/exchange/ui/pages/converter.page.dart';
 import 'package:finansalproje/exchange/ui/pages/graphs.page.dart';
 import 'package:finansalproje/exchange/ui/pages/rates.page.dart';
+import 'package:finansalproje/exchange/ui/pages/profil.page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +22,7 @@ class _BottomNavigationBarState extends State<BottomNavigationBarWidget> {
     RatesPage(),
     ExchangePage(),
     GraphsPage(),
+    ProfilPage()
   ];
 
   @override
@@ -53,9 +57,18 @@ class _BottomNavigationBarState extends State<BottomNavigationBarWidget> {
           } else if(index == 2){
             setState(() {
               appBarTitle = "Grafik";
-            });
+            }
+            );
+          }
+          else if(index == 3){
+            setState(() {
+              appBarTitle = "Profil";
+            }
+            );
           }
         },
+        type: BottomNavigationBarType.fixed,
+
         items: [
           BottomNavigationBarItem(
             icon: Image.asset('assets/images/dollar-sign.png'),
@@ -71,6 +84,13 @@ class _BottomNavigationBarState extends State<BottomNavigationBarWidget> {
             icon: Image.asset('assets/images/graph.png'),
             activeIcon: Image.asset('assets/images/graph-active.png'),
             title: Text('Grafik'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.grey),
+            activeIcon: Icon(Icons.person, color: kPrimaryColor,),
+            title: Text('Profil'),
+           // label: "Cüzdan"
+
           ),
         ],
       ),

@@ -2,14 +2,16 @@ import 'package:finansalproje/constants.dart';
 import 'package:finansalproje/screens/kayit_ol/kayit_ekrani.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-
+import 'package:finansalproje/screens/giris_yap/components/body.dart';
 import '../../size_config.dart';
 
 class SosyalMedyaGiris extends StatelessWidget {
+  final Function func;
+
   const SosyalMedyaGiris({
     Key key,
+    this.func
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +22,7 @@ class SosyalMedyaGiris extends StatelessWidget {
           elevation: 8,
           //     padding: EdgeInsets.all(8),
           text: "Google ile Giriş Yap",
-          onPressed: () {},
+          onPressed:(){}
         ),
 
       ],

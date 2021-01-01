@@ -1,4 +1,4 @@
-import 'package:custom_radio_grouped_button/CustomButtons/CustomRadioButton.dart';
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:finansalproje/exchange/ui/widget/currency-button.widget.dart';
 import 'package:finansalproje/exchange/ui/widget/currency-history-graph.widget.dart';
 import 'package:finansalproje/exchange/ui/widget/swap-currencies-button.widget.dart';
@@ -71,7 +71,6 @@ class _GraphsPageState extends State<GraphsPage>
                       elevation: 2.0,
                       buttonColor: primaryGrey,
                       buttonLables: [
-
                         "1H",
                         "1A",
                         "3A",
@@ -79,7 +78,6 @@ class _GraphsPageState extends State<GraphsPage>
                         "5Y",
                       ],
                       buttonValues: [
-
                         "7",
                         "30",
                         "90",
@@ -97,7 +95,9 @@ class _GraphsPageState extends State<GraphsPage>
                 )
               ],
             ),
-            SizedBox(height: 10.0,),
+            SizedBox(
+              height: 10.0,
+            ),
             Row(
               children: <Widget>[
                 Padding(

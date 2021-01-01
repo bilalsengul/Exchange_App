@@ -1,6 +1,7 @@
 import 'package:finansalproje/screens/components/formlar.dart';
 import 'package:finansalproje/screens/components/widgets.dart';
 import 'package:finansalproje/screens/giris_yap/components/body.dart';
+import 'package:finansalproje/screens/giris_yap/giris_ekrani.dart';
 import 'package:finansalproje/screens/kayit_ol/components/profil_bilgileri.dart';
 import 'package:finansalproje/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -173,16 +174,14 @@ class _KayitFormuState extends State<KayitFormu> {
                 Button(
                   onPressed: () async {
                     await Firebase.initializeApp();
-                    if(await register(_eMail.text, _password.text)) {
+                    if(await register(_eMail.text, _password.text, context)) {
                       await FirebaseAuth.instance.signInWithEmailAndPassword(email: _eMail.text, password: _password.text);
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Container(
-                              child: Text("başarıyla giris yapildi"),
-                            )),
-                      );
+                     await _showMyDialog(context, mesaj:"Kaydınız başarıyla oluşturuldu.\nGiriş Yapabilirsiniz",basariliMi: true);
+                    }
+                    else{
+                      _showMyDialog(context,mesaj: "Bu e-maile kayıtlı bir hesap zaten var", basariliMi: false) ;
+
                     }
 
                   },
@@ -200,20 +199,65 @@ class _KayitFormuState extends State<KayitFormu> {
     );
   }}
 
-Future<bool> register(String email, String password) async {
+Future<bool> register(String email, String password, BuildContext context) async {
   try {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
     return true;
   } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
-    }
+     if (e.code == 'email-already-in-use') {
+     //  _showMyDialog(context,mesaj: "Bu e-maile kayıtlı bir hesap zaten var", basariliMi: false) ;
+     }
     return false;
   } catch (e) {
     print(e.toString());
     return false;
   }
 }
+
+Future<void> _showMyDialog(BuildContext context,{ String mesaj,  @required bool basariliMi} ) async {
+
+    return showDialog<void>(
+      context:context ,
+      // barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          //  title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            primary: true,
+            child: ListBody(
+              children: <Widget>[
+                Text(mesaj),
+
+              ],
+            ),
+          ),
+          // contentTextStyle: TextStyle(fontFamily: 'Muli'),
+          actions: <Widget>[
+
+            Button(
+
+              title: (basariliMi)?"Giriş Yap":"Tamam",
+              buttonColor: (basariliMi)?Colors.green:Colors.red,
+              fontColor: Colors.white,
+
+              onPressed: () {
+                if(basariliMi){
+                Navigator.of(context).pushReplacement(
+
+                    MaterialPageRoute(builder: (context)=>GirisEkrani())
+                );
+                }
+                else{
+                  Navigator.of(context).pop();
+                }
+
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+

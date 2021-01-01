@@ -1,8 +1,11 @@
+import 'package:finansalproje/exchange/main2.dart';
+import 'package:finansalproje/screens/giris_yap/components/body.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants.dart';
 
@@ -14,11 +17,14 @@ import 'size_config.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(localStorage == null ? MyApp() : EasyExchange());
 }
 
 
 class MyApp extends StatelessWidget {
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

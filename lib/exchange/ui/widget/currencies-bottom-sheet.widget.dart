@@ -39,7 +39,7 @@ class _CurrenciesBottomSheetState extends State<CurrenciesBottomSheet> {
             children: <Widget>[
               ListTile(
                   title: Text(
-                'Select a currency',
+                'Para Birimleri',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
               )),
               CurrencyRateList(widget.baseCurrency, widget.callback)
