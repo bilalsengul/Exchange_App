@@ -1,5 +1,5 @@
-import 'package:finansalproje/constants.dart';
-import 'package:finansalproje/screens/kayit_ol/kayit_ekrani.dart';
+import 'package:finansalbt/constants.dart';
+import 'package:finansalbt/screens/kayit_ol/kayit_ekrani.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -22,7 +22,15 @@ class SosyalMedyaGiris extends StatelessWidget {
           text: "Google ile Giriş Yap",
           onPressed: () {},
         ),
+        SignInButton(
 
+          Buttons.Twitter,
+          elevation: 8,
+
+          //     padding: EdgeInsets.all(8),
+          text: "Twitter ile Giriş Yap",
+          onPressed: () {},
+        ),
       ],
     );
   }

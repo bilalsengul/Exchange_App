@@ -1,10 +1,8 @@
 import 'dart:ui';
 
-import 'package:finansalproje/exchange/main2.dart';
-import 'package:finansalproje/screens/components/formlar.dart';
-import 'package:finansalproje/screens/components/widgets.dart';
-import 'package:finansalproje/screens/kayit_ol/kayit_ekrani.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:finansalbt/screens/components/formlar.dart';
+import 'package:finansalbt/screens/components/widgets.dart';
+import 'package:finansalbt/screens/kayit_ol/kayit_ekrani.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -20,40 +18,40 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: genisligeGoreAyarla(context, 42)),
-          child: SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: genisligeGoreAyarla(context, 24),
-              ),
-              child: Column(
-                children: <Widget>[
-
-                  Text(
-                    "Hoş geldiniz :)",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: yuksekligeGoreAyarla(context, 30)),
-                  ),
-                  SizedBox(height: yuksekligeGoreAyarla(context, 8),),
-
-                  Text(
-                    "Kayıtlı e-mail adresiniz ve şifrenizle veya\n sosyal medya hesaplarınızla giriş yapabilirsiniz.",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: yuksekligeGoreAyarla(context, 16)),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: yuksekligeGoreAyarla(context, 36),),
-
-                  GirisFormu(),
-                ],
-              ),
-            ),
+      margin: EdgeInsets.only(top: genisligeGoreAyarla(context, 42)),
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: genisligeGoreAyarla(context, 24),
           ),
-        ));
+          child: Column(
+            children: <Widget>[
+
+              Text(
+                "Hoş geldiniz :)",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: yuksekligeGoreAyarla(context, 30)),
+              ),
+              SizedBox(height: yuksekligeGoreAyarla(context, 8),),
+
+              Text(
+                "Kayıtlı e-mail adresiniz ve şifrenizle veya\n sosyal medya hesaplarınızla giriş yapabilirsiniz.",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: yuksekligeGoreAyarla(context, 16)),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: yuksekligeGoreAyarla(context, 36),),
+
+              GirisFormu(),
+            ],
+          ),
+        ),
+      ),
+    ));
   }
 }
 
@@ -63,8 +61,6 @@ class GirisFormu extends StatefulWidget {
 }
 
 class _GirisFormuState extends State<GirisFormu> {
-  TextEditingController _eMail  = TextEditingController();
-  TextEditingController _password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -81,92 +77,11 @@ class _GirisFormuState extends State<GirisFormu> {
               // height: yuksekligeGoreAyarla(context, 200),
               child: Column(
                 children: <Widget>[
-              //    buildEmail(context, _eMail),
-                  TextFormField(
-                      controller: _eMail,
-                      keyboardType: TextInputType.emailAddress,
-                      autovalidateMode: AutovalidateMode.onUserInteraction ,
-
-                      // onSaved: (newValue) => email = newValue,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                        } else if (emailValidatorRegExp.hasMatch(value)) {
-                        }
-                        return null;
-                      },
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return kEmailNullError;
-                        } else if (!emailValidatorRegExp.hasMatch(value)) {
-                          return kInvalidEmailError;
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: "E-Mail",
-                        hintText: "E-mail adresiniz...",
-
-
-                        suffixIcon: Icon(Icons.mail_outline, color: kTextColor),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(horizontal: yuksekligeGoreAyarla(context,40),vertical: genisligeGoreAyarla(context,14)),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: kTextColor),
-
-                        ),
-                        focusedBorder:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: kTextColor),
-
-                        ),
-                      )
-                  ),
+                  buildEmail(context),
                   SizedBox(
                     height: yuksekligeGoreAyarla(context, 15),
                   ),
-                 // buildSifre(context,_password, dogrulama: false), ,
-                  TextFormField(
-
-                      controller: _password,
-                      obscureText: true,
-                      autovalidateMode: AutovalidateMode.onUserInteraction ,
-
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                        } else if (value.length >= 8) {
-                        }
-                        return "";
-                      },
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return kPassNullError;
-                        } else if (value.length < 7) {
-                          return kShortPassError;
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: "Şifre",
-                        hintText:  "Şifrenizi giriniz...",
-
-                        suffixIcon: Icon(Icons.lock_outline, color: kTextColor),
-
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        contentPadding: EdgeInsets.symmetric(horizontal: yuksekligeGoreAyarla(context,40),vertical: genisligeGoreAyarla(context,14)),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: kTextColor),
-
-                        ),
-                        focusedBorder:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: kTextColor),
-
-                        ),
-                      )
-
-                  ),
+                  buildSifre(context, dogrulama: false),
                   SizedBox(
                     height: yuksekligeGoreAyarla(context, 2),
                   ),
@@ -198,30 +113,12 @@ class _GirisFormuState extends State<GirisFormu> {
                 SizedBox(
                   height: yuksekligeGoreAyarla(context, 15),
                 ),
-              //  GirisYapButon(_formKey),
+
                 Button(
-                  onPressed: () async {
+                  onPressed: () {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
-                      if(await signIn(_eMail.text, _password.text)) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EasyExchange(),
-                        )
-                        );
-                      }
-                      else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Container(
-                                child: Text("giris yapilamadi!!"),
-                              )),
-                        );
-                      }
                     }
-
                   },
                   title: "Giriş Yap",
                   buttonColor: kPrimaryColor,
@@ -241,19 +138,5 @@ class _GirisFormuState extends State<GirisFormu> {
         ),
       ),
     );
-  }
-}
-Future<bool> signIn(String email, String password) async {
-  try {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
-    return true;
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'user-not-found') {
-      print('No user found for that email.');
-    } else if (e.code == 'wrong-password') {
-      print('Wrong password provided for that user.');
-    }
-    return false;
   }
 }

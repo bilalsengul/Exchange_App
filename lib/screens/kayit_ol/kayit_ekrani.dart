@@ -9,7 +9,7 @@ class KayitEkrani extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+    resizeToAvoidBottomPadding: false,
 
       appBar: _appBar(context),
       body: Body(),

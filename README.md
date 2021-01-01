@@ -1,6 +1,6 @@
-# finansalproje
+# finansalbt
 
-A new Flutter application.
+Finansal BT Proje Ödevi
 
 ## Getting Started
 
